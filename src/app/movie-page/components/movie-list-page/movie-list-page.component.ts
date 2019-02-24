@@ -18,6 +18,9 @@ export class MovieListPageComponent implements OnInit, OnDestroy {
     this.fetchListSubscription = this.requestService.fetchList('1').subscribe((response) => {
       const movieList = response.map(item => new Movie(item));
       this.movies = [...movieList];
+    }, (error) => {
+      this.movies = this.requestService.fetchListMock();
+      console.log('error #1', error);
     });
   }
 

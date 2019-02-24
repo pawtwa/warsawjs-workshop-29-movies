@@ -9,6 +9,9 @@ export class MovieResolver implements Resolve<Movie> {
   constructor(private requestService: RequestService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<Movie> | Promise<Movie> | Movie {
-    return this.requestService.fetchMovie(route.params.id);
+    const observable = this.requestService.fetchMovie(route.params.id);
+    console.log('observable 1', observable);
+    // observable
+    return observable;
   }
 }

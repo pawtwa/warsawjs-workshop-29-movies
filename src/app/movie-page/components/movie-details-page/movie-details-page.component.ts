@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Movie} from '../../../models/movie-model';
 
@@ -7,16 +7,12 @@ import {Movie} from '../../../models/movie-model';
   templateUrl: './movie-details-page.component.html',
   styleUrls: ['./movie-details-page.component.css']
 })
-export class MovieDetailsPageComponent implements OnInit, OnDestroy {
+export class MovieDetailsPageComponent implements OnInit {
   movie: Movie;
 
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.movie = new Movie(this.route.snapshot.data.movie);
-  }
-
-  ngOnDestroy(): void {
-    // this.paramsSubscription.unsubscribe();
   }
 }
